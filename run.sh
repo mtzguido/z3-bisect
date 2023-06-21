@@ -6,7 +6,7 @@ if [ $# -ne 3 ]; then
 	exec >&2
 	echo "Usage: $0 <bad_ref> <good_ref> <file.smt2>"
 	echo
-	echo "Example: ./run.sh origin/master Z3-4.8.5 K256.smt2"
+	echo "Example: ./run.sh origin/master Z3-4.8.5 examples/K256.smt2"
 	echo
 	echo "The bisection will try to find when checking file.smt2 goes from 'unsat' to 'unknown'"
 	echo "You can bisect other behaviors by editing test.sh (IOU: options to do so without editing :^) )"
