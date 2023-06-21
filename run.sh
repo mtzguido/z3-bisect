@@ -25,10 +25,11 @@ fi
 BAD=$1
 GOOD=$2
 FILE=$3
+TAG=$(basename ${FILE} .smt2)
 
 git -C z3/ bisect reset
 git -C z3/ clean -dffx
 git -C z3/ bisect start ${BAD} ${GOOD}
-git -C z3/ bisect run $(realpath build-and-test.sh) $(realpath ${FILE}) 2>&1 | tee BISECT.log
+git -C z3/ bisect run $(realpath build-and-test.sh) $(realpath ${FILE}) 2>&1 | tee "BISECT_${TAG}.log"
 echo
 echo
