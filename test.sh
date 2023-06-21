@@ -21,7 +21,7 @@ sat=0
 seed=0
 
 for seed in $(seq 0 $((N-1))); do
-	o=$(ramon ./z3/build/z3 smt.random_seed=$seed "${FILE}" 2>errout)
+	o=$(ramon ./z3/build/z3 smt.random_seed=$seed "${FILE}" 2>errout | tee output | tail -n1)
 	if grep SIGKILL errout; then oom=$((oom+1));
 	elif [ "$o" == "unknown" ]; then unknown=$((unknown+1));
 	elif [ "$o" == "unsat" ]; then unsat=$((unsat+1));
