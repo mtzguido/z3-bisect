@@ -27,6 +27,7 @@ GOOD=$2
 FILE=$3
 TAG=$(basename ${FILE} .smt2)
 
+git -C z3/ fetch --all
 git -C z3/ bisect reset
 git -C z3/ clean -dffx
 git -C z3/ bisect start ${BAD} ${GOOD}
